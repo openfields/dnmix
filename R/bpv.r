@@ -10,7 +10,7 @@ bpv <- function(mcmc, title){
   p.lim <- c(min(f.lim), max(f.lim))
   # create plot & add 1:1 line
   tex <- paste(title, "\n", "Bayesian p-value:", " ", round(bpv,4))
-  plot(mcmc$sims.list$fit.new,mcmc$sims.list$fit,xlim=p.lim,ylim=p.lim, main=tex)
+  plot(mcmc$sims.list$fit.new~mcmc$sims.list$fit,xlim=p.lim,ylim=p.lim, main=tex)
   abline(0,1,col="red")
   # return Bayesian p-value
   return(bpv)
