@@ -7,7 +7,7 @@ cat("
     model {
     #omega ~ dunif(0, 1) # zero inflation parameter
     for(i in 1:nsites){
-      p[i] ~ dunif(0.5, 0.6)
+      p[i] ~ dunif(0.4, 0.5)
     }
     beta0 ~ dnorm(0,.1) # intercept
     beta1 ~ dnorm(0,.1) # pc1
