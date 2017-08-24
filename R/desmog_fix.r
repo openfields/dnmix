@@ -7,7 +7,7 @@ cat("
     model {
     #omega ~ dunif(0, 1) # zero inflation parameter
     for(i in 1:nsites){
-      p[i] ~ dunif(0.3, 0.4)
+      p[i] ~ dunif(0.25, 0.35)
     }
     beta0 ~ dnorm(0,.1) # intercept
     beta1 ~ dnorm(0,.1) # pc1
@@ -64,5 +64,12 @@ cat("
     ",fill=TRUE)
 sink()
 
-dfa.pc.bc.3 <- autojags(data.dfa.bc, inits.df, parameters, "pconst.jags", n.chains=nc, n.thin=1, parallel=TRUE)
+params.pc <- c("N", "p", "beta0", "beta1", "beta2", "beta3", "beta4", "beta5", "beta6", "fit", "fit.new")
+
+dfa.pc.bc.3 <- autojags(data.dfa.bc, inits.df, params.pc, "pconst.jags", n.chains=nc, n.thin=1, parallel=TRUE)
+mean(dfa.pc.bc.3$sims.list$fit.new>dfa.pc.bc.3$sims.list$fit)
+#[1] 0.4026667
+
+plot(dfa.pc.bc.3$sims.list$fit.new, dfa.pc.bc.3$sims.list$fit, xlim=c(20,60), ylim=c(20,60))
+abline(0,1)
 
