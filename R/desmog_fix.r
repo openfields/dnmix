@@ -13,13 +13,13 @@ cat("
     beta4 ~ dnorm(0,.1) # RT
     beta5 ~ dnorm(0,.1) # T1
     beta6 ~ dnorm(0,.1) # centrality parameter 1
-    p ~ dunif(0.5,0.6)
+    p0 ~ dunif(0.5,0.6)
 #     b4 ~ dnorm(0,.1) # pc1 - detection prob
 #     b5 ~ dnorm(0,.1) # pc2 - detection prob
 #     p0~dnorm(0,.1) # int - detection prob
 
     for(i in 1:nsites){
-    #p[i]<- p #p0 + b4*cov1[i] + b5*cov2[i]# could have covariates here
+    p[i]<- p0 #p0 + b4*cov1[i] + b5*cov2[i]# could have covariates here
     mu[i,1]<- p[i]
     mu[i,2]<- p[i]*(1-p[i])
     mu[i,3]<- p[i]*(1-p[i])*(1-p[i])
