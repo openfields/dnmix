@@ -99,3 +99,7 @@ mf7c_bpv <- bpv(dfa.pt.c7, "fuscus model: closeness (1:7)")
 dfa.pt.c2 <- autojags(data.dfa.c2, inits.df, params.pt, "ptune.jags", n.chains=nc, n.thin=1, parallel=TRUE)
 print(dfa.pt.c2)
 mf2c_bpv <- bpv(dfa.pt.c2, "fuscus model: closeness (1:2)")
+
+
+# for WAIC calculation, see:
+# https://jfiksel.github.io/2017-05-24-waic_aft_models_jags/
