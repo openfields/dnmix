@@ -23,12 +23,11 @@ cat("
     w7 ~ dbern(0.5)
 
     for(i in 1:nsites){
-    #p[i]<- p0 #p0 + b4*cov1[i] + b5*cov2[i]# could have covariates here
-    mu[i,1]<- p[i]
-    mu[i,2]<- p[i]*(1-p[i])
-    mu[i,3]<- p[i]*(1-p[i])*(1-p[i])
-    pi0[i]<- 1 - mu[i,1]-mu[i,2]-mu[i,3]
-    pcap[i]<-1-pi0[i]
+      mu[i,1]<- p[i]
+      mu[i,2]<- p[i]*(1-p[i])
+      mu[i,3]<- p[i]*(1-p[i])*(1-p[i])
+      pi0[i]<- 1 - mu[i,1]-mu[i,2]-mu[i,3]
+      pcap[i]<-1-pi0[i]
     
     for(j in 1:3){
     muc[i,j]<-mu[i,j]/pcap[i]
