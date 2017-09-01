@@ -11,14 +11,16 @@ cat("
     beta3 ~ dnorm(0,.1) # pc3
     beta4 ~ dnorm(0,.1) # RT
     beta5 ~ dnorm(0,.1) # T1
-    beta6 ~ dnorm(0,.1) # centrality parameter 1
-    
+    beta6 ~ dnorm(0,.1) # closeness
+    beta7 ~ dnorm(0,.1) # betweenness    
+
     w1 ~ dbern(0.5)
     w2 ~ dbern(0.5)
     w3 ~ dbern(0.5)
     w4 ~ dbern(0.5)
     w5 ~ dbern(0.5)
     w6 ~ dbern(0.5)
+    w7 ~ dbern(0.5)
 
     for(i in 1:nsites){
     #p[i]<- p0 #p0 + b4*cov1[i] + b5*cov2[i]# could have covariates here
@@ -40,7 +42,7 @@ cat("
     
     # 3. abundance model
     N[i] ~ dpois(lambda[i])
-    log(lambda[i])<- beta0 + w1*beta1*cov1[i] + w2*beta2*cov2[i] + w3*beta3*cov3[i] + w4*beta4*cov4[i] + w5*beta5*cov5[i]+ w6*beta6*cov6[i]
+    log(lambda[i])<- beta0 + w1*beta1*cov1[i] + w2*beta2*cov2[i] + w3*beta3*cov3[i] + w4*beta4*cov4[i] + w5*beta5*cov5[i]+ w6*beta6*cov6[i] + w7*beta7*cov7[i]
     
     # fit stats
     for (j in 1:3){
