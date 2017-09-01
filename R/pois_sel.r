@@ -2,7 +2,7 @@
 sink("pois_sel.jags")
 cat("
     model {
-    for(i in 1:nsites){
+    for(i in 1:53){
       p[i] ~ dunif(0.2,0.5)
     }
     beta0 ~ dnorm(0,.1) # intercept
@@ -22,7 +22,7 @@ cat("
     w6 ~ dbern(0.5)
     w7 ~ dbern(0.5)
 
-    for(i in 1:nsites){
+    for(i in 1:53){
       mu[i,1]<- p[i]
       mu[i,2]<- p[i]*(1-p[i])
       mu[i,3]<- p[i]*(1-p[i])*(1-p[i])
