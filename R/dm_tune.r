@@ -5,7 +5,7 @@ cat("
     model {
     #omega ~ dunif(0, 1) # zero inflation parameter
     for(i in 1:nsites){
-    p[i] <- PT
+    p[i] ~ dunif(0,.4)
     }
     beta0 ~ dnorm(0,.1) # intercept
     beta1 ~ dnorm(0,.1) # pc1
@@ -66,6 +66,11 @@ params.pc
 params.pt <- params.pc[-2]
 
 data.dma.c1.pt <- data.dma.c1
+
+# changed to dunif(0, .4)
+dma.pt.c1.unif <- autojags(data.dma.c1, inits.dm, params.pt, "ptune.jags", n.chains=nc, n.thin=1, parallel=TRUE)
+
+
 
 # .3
 dma.pt.c1 <- autojags(data.dma.c1.pt, inits.dm, params.pt, "ptune.jags", n.chains=nc, n.thin=1, parallel=TRUE)
